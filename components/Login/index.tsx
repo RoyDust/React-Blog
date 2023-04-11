@@ -3,6 +3,8 @@ import styles from "./index.module.scss"
 import CountDown from '../CountDown'
 import request from "@/service/fetch"
 import { message } from 'antd';
+import { useStore } from '@/store';
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
   isShow: Boolean;
@@ -10,12 +12,15 @@ interface IProps {
 }
 
 const Login = (props: IProps) => {
+  const store = useStore();
   const { isShow = false, onClose } = props;
   const [isShowVerifyCode, setIsShowVerifyCode] = useState(false)
   const [form, setForm] = useState({
     phone: "",
     verify: ""
   });
+
+  // console.log(store);
 
 
   // 关闭
@@ -29,7 +34,7 @@ const Login = (props: IProps) => {
       message.warning("请输入手机号")
       return;
     }
-
+    // 发送短信
     request.post("/api/user/sendVerifyCode", {
       to: form?.phone,
       templateId: 1,
@@ -50,6 +55,9 @@ const Login = (props: IProps) => {
     }).then((res: any) => {
       if (res?.code === 0) {
         // 登录成功
+        store.user.setUserInfo(res?.data)
+        // console.log(store);
+
         onClose && onClose()
       } else {
         message.error(res?.msg || "未知错误")
@@ -75,7 +83,7 @@ const Login = (props: IProps) => {
   }
 
   return (
-    isShow && (
+    isShow ? (
       <div className={styles.loginArea}>
         <div className={styles.loginBox}>
           <div className={styles.loginTitle}>
@@ -96,8 +104,8 @@ const Login = (props: IProps) => {
           </div>
         </div>
       </div>
-    )
+    ) : null
   )
 }
 
-export default Login 
+export default observer(Login) 

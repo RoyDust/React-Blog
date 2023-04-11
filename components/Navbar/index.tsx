@@ -1,13 +1,21 @@
 import type { NextPage } from 'next'
+import { observer } from 'mobx-react-lite'
 import { navs } from './config'
 import styles from "./index.module.scss"
-import { Button } from "antd"
+import { Button, Avatar, Dropdown, MenuProps } from "antd"
+import { LoginOutlined, HomeOutlined } from "@ant-design/icons"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Login from 'components/Login'
+import { useStore } from '@/store'
+import request from 'service/fetch'
 
 const Navbar: NextPage = () => {
+  const store = useStore();
+  const { userId, avatar } = store.user.userInfo;
+  console.log(userId, avatar);
+
   const { pathname } = useRouter();
   const [isShowLogin, setIsShowLogin] = useState(false);
   // 转跳文章编辑页面
@@ -23,6 +31,45 @@ const Navbar: NextPage = () => {
     setIsShowLogin(false)
   }
 
+  // 跳转个人页面
+  const handleGotoPersonalPage = () => {
+
+  }
+
+  // 退出
+  const handleLogout = () => {
+    request.post("/api/user/logout").then((res: any) => {
+      if (res?.code === 0) {
+        store.user.setUserInfo({})
+      }
+    })
+  }
+
+  // 渲染下拉菜单
+  // const renderDropDownMenu = () => {
+  //   return (
+  //     <Menu>
+  //       <Menu.Item><HomeOutlined /> 个人主页</Menu.Item>
+  //       <Menu.Item><LoginOutlined /> 退出系统</Menu.Item>
+  //     </Menu>
+  //   )
+  // }
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <div onClick={handleGotoPersonalPage}><HomeOutlined /> 个人主页</div>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <div onClick={handleLogout} >
+          <LoginOutlined /> 退出系统
+        </div>
+      ),
+    }
+  ];
 
   return (
     <div className={styles.navbar}>
@@ -40,11 +87,20 @@ const Navbar: NextPage = () => {
       </section>
       <section className={styles.operationArea}>
         <Button onClick={handleGotoEditorPage}>写文章</Button>
-        <Button type='primary' onClick={handleLogin}>登录</Button>
+        {
+          userId ? (
+            <>
+              <Dropdown menu={{ items }} placement='bottomLeft' >
+                <Avatar src={avatar} size={32} />
+              </Dropdown>
+            </>
+          ) : <Button type='primary' onClick={handleLogin}>登录</Button>
+        }
       </section>
       <Login isShow={isShowLogin} onClose={handleClose} ></Login>
     </div >
   )
 }
 
-export default Navbar
+// 用mobx的observer包裹组件，实现响应式
+export default observer(Navbar);
