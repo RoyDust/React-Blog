@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 
 const index: NextPage = () => {
   return (
-    <div>我是首页</div>
+    <div>标签管理页</div>
   )
 }
 

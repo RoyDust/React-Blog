@@ -1,10 +1,10 @@
 import React, { } from 'react'
 import type { NextPage } from 'next'
 
-const index: NextPage = () => {
+const Footer: NextPage = () => {
   return (
-    <div>我是首页</div>
+    <div>页脚</div>
   )
 }
 
-export default index
+export default Footer
