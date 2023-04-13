@@ -64,9 +64,12 @@ const Login = (props: IProps) => {
       }
     })
   }
+
   // Github登录
   const handleOAuthGithub = () => {
-
+    const githubClientid = '1443ed301b9c096e0e1d';
+    const redirectUrl = 'http://localhost:3000/api/oauth/redirect'
+    window.open(`https://github.com/login/oauth/authorize?client_id=${githubClientid}&redirect_uri=${redirectUrl}`)
   }
   // 改变Form的内容
   const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {

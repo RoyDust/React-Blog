@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { observer } from 'mobx-react-lite'
 import { navs } from './config'
 import styles from "./index.module.scss"
-import { Button, Avatar, Dropdown, MenuProps } from "antd"
+import { Button, Avatar, Dropdown, MenuProps, message } from "antd"
 import { LoginOutlined, HomeOutlined } from "@ant-design/icons"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -14,13 +14,15 @@ import request from 'service/fetch'
 const Navbar: NextPage = () => {
   const store = useStore();
   const { userId, avatar } = store.user.userInfo;
-  console.log(userId, avatar);
-
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
   const [isShowLogin, setIsShowLogin] = useState(false);
   // 转跳文章编辑页面
   const handleGotoEditorPage = () => {
-
+    if (userId) {
+      push('/editor/new')
+    } else {
+      message.warning("请先登录")
+    }
   }
   // 登录弹窗
   const handleLogin = () => {
@@ -33,7 +35,7 @@ const Navbar: NextPage = () => {
 
   // 跳转个人页面
   const handleGotoPersonalPage = () => {
-
+    push(`/user/${userId}`);
   }
 
   // 退出
@@ -46,14 +48,6 @@ const Navbar: NextPage = () => {
   }
 
   // 渲染下拉菜单
-  // const renderDropDownMenu = () => {
-  //   return (
-  //     <Menu>
-  //       <Menu.Item><HomeOutlined /> 个人主页</Menu.Item>
-  //       <Menu.Item><LoginOutlined /> 退出系统</Menu.Item>
-  //     </Menu>
-  //   )
-  // }
   const items: MenuProps['items'] = [
     {
       key: '1',
