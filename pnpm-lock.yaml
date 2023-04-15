@@ -22,6 +22,8 @@ specifiers:
   eslint-config-next: 13.3.0
   iron-session: ^6.3.1
   js-base64: ^3.7.5
+  markdown-to-jsx: ^7.2.0
+  markdown-to-txt: ^2.0.1
   md5: ^2.3.0
   mobx: ^6.9.0
   mobx-react-lite: ^3.4.3
@@ -59,6 +61,8 @@ dependencies:
   eslint-config-next: registry.npmmirror.com/eslint-config-next/13.3.0_vwh6htx42aidho2qgfca5u5rwm
   iron-session: registry.npmmirror.com/iron-session/6.3.1_next@13.3.0
   js-base64: registry.npmmirror.com/js-base64/3.7.5
+  markdown-to-jsx: registry.npmmirror.com/markdown-to-jsx/7.2.0_react@18.2.0
+  markdown-to-txt: registry.npmmirror.com/markdown-to-txt/2.0.1
   md5: registry.npmmirror.com/md5/2.3.0
   mobx: registry.npmmirror.com/mobx/6.9.0
   mobx-react-lite: registry.npmmirror.com/mobx-react-lite/3.4.3_lrdhi4fih7ii4kmeak7ov4c3ha
@@ -4230,6 +4234,12 @@ packages:
       p-locate: registry.npmmirror.com/p-locate/5.0.0
     dev: false
 
+  registry.npmmirror.com/lodash.escape/4.0.1:
+    resolution: {integrity: sha512-nXEOnb/jK9g0DYMr1/Xvq6l5xMD7GDG55+GSYIYmS0G4tBk/hURD4JR9WCavs04t33WmJx9kCyp9vJ+mr4BOUw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.escape/-/lodash.escape-4.0.1.tgz}
+    name: lodash.escape
+    version: 4.0.1
+    dev: false
+
   registry.npmmirror.com/lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.merge/-/lodash.merge-4.6.2.tgz}
     name: lodash.merge
@@ -4241,6 +4251,12 @@ packages:
     name: lodash.truncate
     version: 4.4.2
     dev: true
+
+  registry.npmmirror.com/lodash.unescape/4.0.1:
+    resolution: {integrity: sha512-DhhGRshNS1aX6s5YdBE3njCCouPgnG29ebyHvImlZzXZf2SHgt+J08DHgytTPnpywNbO1Y8mNUFyQuIDBq2JZg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz}
+    name: lodash.unescape
+    version: 4.0.1
+    dev: false
 
   registry.npmmirror.com/long/5.2.1:
     resolution: {integrity: sha512-GKSNGeNAtw8IryjjkhZxuKB3JzlcLTwjtiQCHKvqQet81I93kXslhDQruGI/QsddO83mcDToBVy7GqGS/zYf/A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/long/-/long-5.2.1.tgz}
@@ -4313,6 +4329,36 @@ packages:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-table/-/markdown-table-3.0.3.tgz}
     name: markdown-table
     version: 3.0.3
+    dev: false
+
+  registry.npmmirror.com/markdown-to-jsx/7.2.0_react@18.2.0:
+    resolution: {integrity: sha512-3l4/Bigjm4bEqjCR6Xr+d4DtM1X6vvtGsMGSjJYyep8RjjIvcWtrXBS8Wbfe1/P+atKNMccpsraESIaWVplzVg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-to-jsx/-/markdown-to-jsx-7.2.0.tgz}
+    id: registry.npmmirror.com/markdown-to-jsx/7.2.0
+    name: markdown-to-jsx
+    version: 7.2.0
+    engines: {node: '>= 10'}
+    peerDependencies:
+      react: '>= 0.14.0'
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+    dev: false
+
+  registry.npmmirror.com/markdown-to-txt/2.0.1:
+    resolution: {integrity: sha512-Hsj7KTN8k1gutlLum3vosHwVZGnv8/cbYKWVkUyo/D1rzOYddbDesILebRfOsaVfjIBJank/AVOySBlHAYqfZw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-to-txt/-/markdown-to-txt-2.0.1.tgz}
+    name: markdown-to-txt
+    version: 2.0.1
+    dependencies:
+      lodash.escape: registry.npmmirror.com/lodash.escape/4.0.1
+      lodash.unescape: registry.npmmirror.com/lodash.unescape/4.0.1
+      marked: registry.npmmirror.com/marked/4.3.0
+    dev: false
+
+  registry.npmmirror.com/marked/4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/marked/-/marked-4.3.0.tgz}
+    name: marked
+    version: 4.3.0
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: false
 
   registry.npmmirror.com/mathml-tag-names/2.1.3:

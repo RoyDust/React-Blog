@@ -3,6 +3,8 @@ export type IUserInfo = {
   userId?: number | null,
   nickname?: string,
   avatar?: string,
+  // 连接表user的id
+  id?: number
 };
 
 export interface IUserStore {

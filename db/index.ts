@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Connection, getConnection, createConnection } from 'typeorm';
-import { User, UserAuth } from './entity';
+import { User, UserAuth, Article, Comment } from './entity';
 
 const host = process.env.DATABASE_HOST;
 const port = Number(process.env.DATABASE_PORT);
@@ -27,9 +27,10 @@ export const prepareConnection = () => {
         username,
         password,
         database,
-        entities: [User, UserAuth], 
+        entities: [User, UserAuth, Article, Comment ],
         synchronize: false,
         logging: true,
+        // autoLoadEntities: true, // 自动链接被 forFeature 注册的实体
       });
 
       return connection;
