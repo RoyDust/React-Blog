@@ -1,4 +1,8 @@
 export const EXCEPTION_USER = {
+  NOT_LOGIN: {
+    code: 1001,
+    msg: "未登录"
+  }
 
 }
 export const EXCEPTION_ARTICLE = {
@@ -14,7 +18,14 @@ export const EXCEPTION_ARTICLE = {
     code: 2003,
     msg: "未找到文章",
   },
+}
 
+
+export const EXCEPTION_TAG = {
+  FOLLOW_FAILED: {
+    code: 3001,
+    msg: "关注/取关操作失败",
+  },
 }
 
 export const EXCEPTION_COMMENT = {

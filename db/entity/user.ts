@@ -1,21 +1,25 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
-@Entity({name:"users"})
+@Entity({ name: "users" })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  readonly id!:number
+  readonly id!: number
 
   @Column()
-  nickname!:string;
+  nickname!: string;
 
   @Column()
-  avatar!:string;
+  avatar!: string;
 
-  @Column()
-  job!:string;
+  @Column({
+    nullable: true,
+  })
+  job?: string;
 
-  @Column()
-  introduce!:string;
+  @Column({
+    nullable: true,
+  })
+  introduce?: string;
 
 }
