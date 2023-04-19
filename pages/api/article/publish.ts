@@ -15,7 +15,7 @@ async function publish(req: NextApiRequest, res: NextApiResponse) {
   const db = await prepareConnection();
   const userRepo = db.getRepository(User);
   const articleRepo = db.getRepository(Article);
-  const tagRepo = db.getRepository(Tag);
+  const tagRepo = db.getRepository(Tag); 
 
   // 拿到user表信息
   const user = await userRepo.findOne({

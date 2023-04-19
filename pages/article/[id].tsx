@@ -81,7 +81,7 @@ const ArticleDetail = (props: IProps) => {
               nickname: loginUserInfo?.nickname
             }
           }
-        ].concat([...comments])
+        ].concat([...comments] as any)
         setComments(newComments);
         setInputVal("");
       } else {

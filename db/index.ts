@@ -28,7 +28,7 @@ export const prepareConnection = () => {
         password,
         database,
         entities: [User, UserAuth, Article, Comment, Tag],
-        synchronize: true,  // 数据库的结构是否和代码保持同步
+        synchronize: false,  // 数据库的结构是否和代码保持同步
         logging: true,
       });
 

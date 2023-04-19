@@ -2,8 +2,11 @@ export const EXCEPTION_USER = {
   NOT_LOGIN: {
     code: 1001,
     msg: "未登录"
-  }
-
+  },
+  NOT_FOUND: {
+    code: 1002,
+    msg: "未找到用户"
+  },
 }
 export const EXCEPTION_ARTICLE = {
   PUBLISH_FAILED: {

@@ -85,6 +85,8 @@ async function redirect(req: NextApiRequest, res: NextApiResponse) {
     const user = new User();
     user.nickname = login;
     user.avatar = avatar_url;
+    user.job = '暂无';
+    user.introduce = '这个人很懒，没有写介绍';
 
     const userAuth = new UserAuth();
     userAuth.identity_type = 'github';
