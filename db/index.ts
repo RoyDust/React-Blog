@@ -21,6 +21,7 @@ export const prepareConnection = () => {
       }
 
       const connection = await createConnection({
+        name: 'default',
         type: 'mysql',
         host,
         port,

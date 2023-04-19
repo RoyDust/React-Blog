@@ -14,6 +14,9 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
   const db = await prepareConnection();
   const tagRepo = db.getRepository(Tag);
 
+  console.log(tagRepo);
+
+
   let followTags = await getConnection()
     .createQueryBuilder(Tag, 'tag')
     .leftJoinAndSelect('tag.users', 'users')
