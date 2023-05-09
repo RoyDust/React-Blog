@@ -2,6 +2,7 @@ import Layout from 'components/layout'
 import '@/styles/globals.css'
 import { StoreProvider } from '@/store'
 import { NextPage } from 'next';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 interface IProps {
   initialValue: Record<any, any>;
@@ -24,9 +25,11 @@ function MyApp({ initialValue, Component, pageProps }: IProps) {
   }
 
   return (
-    <StoreProvider initialValue={initialValue}>
-      {renderLayout()}
-    </StoreProvider>
+    <ErrorBoundary>
+      <StoreProvider initialValue={initialValue}>
+        {renderLayout()}
+      </StoreProvider>
+    </ErrorBoundary>
   )
 }
 

@@ -1,6 +1,6 @@
 import { ironOptions } from "@/config";
 import { prepareConnection } from "@/db";
-import { Article, User } from "@/db/entity";
+import { Article } from "@/db/entity";
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from "next";
 import { getConnection } from "typeorm";
@@ -31,8 +31,6 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
         })
       })
       .getMany()
-
-
   }
 
   console.log("过滤后");

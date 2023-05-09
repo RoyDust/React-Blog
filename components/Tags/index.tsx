@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite';
 import styles from './index.module.scss'
 import classnames from 'classnames'

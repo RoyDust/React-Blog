@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { prepareConnection } from '@/db'
 import { Article, Tag } from '@/db/entity'
-import ListItem from '@/components/ListItem'
+// import ListItem from '@/components/ListItem'
 import { IArticle } from './api'
 import { Divider } from 'antd'
 import Tags from '@/components/Tags'
 import request from '@/service/fetch'
+import dynamic from 'next/dynamic'
 
+
+const DynamicComponent = dynamic(() => import("@/components/ListItem"), { loading: () => <p>...</p> })
 
 interface ITag {
   id: number;
@@ -42,11 +45,7 @@ const Index = (props: IProps) => {
   const [selectTag, setSelectTag]: [number, Function] = useState(0);
   const [showAricles, setShowAricles] = useState([...articles]);
 
-  console.log(articles);
-  console.log(tags);
-
   useEffect(() => {
-    console.log("++++++", selectTag);
 
     if (selectTag) {
       selectTag &&
@@ -59,7 +58,6 @@ const Index = (props: IProps) => {
     } else {
       setShowAricles([...articles])
     }
-
   }, [selectTag, articles]);
 
 
@@ -77,7 +75,8 @@ const Index = (props: IProps) => {
           showAricles?.map((article) =>
           (
             <>
-              <ListItem article={article} key={article.id} />
+              {/* <ListItem article={article} key={article.id} /> */}
+              <DynamicComponent article={article} key={article.id} />
               <Divider />
             </>
           ))

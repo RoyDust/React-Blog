@@ -20,6 +20,7 @@ interface IProps {
 // ssr 这里还是属于后端
 export async function getServerSideProps({ params }: any) {
 
+
   // 获取文章id
   console.log(params);
   const articleId = params?.id;
